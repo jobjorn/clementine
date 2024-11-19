@@ -63,7 +63,8 @@ export const Footer: React.FC<{}> = () => {
         <Box sx={{ flexGrow: 1 }}>
           Ett projekt av
           <br />
-          <Link href="https://www.jobjorn.se/">Jobjörn</Link> 🍊
+          <Link href="https://www.jobjorn.se/">Jobjörn</Link> &{' '}
+          <Link href="https://www.mejstedt.se/">Hedvig</Link> 🍊
         </Box>
       </Container>
     </footer>
