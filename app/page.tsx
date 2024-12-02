@@ -32,7 +32,11 @@ export default async function Page() {
 
   const importedSIE = fs.readFileSync('public/SIE4 Exempelfil.SE', 'latin1');
   const sieJSON = convertSIEFileToJSON(importedSIE);
-  console.log(sieJSON);
+  //  console.log(sieJSON);
+
+  if (sieJSON && sieJSON.ver && sieJSON.ver[0]) {
+    console.log('sieJSON ver 0', sieJSON.ver[0]);
+  }
 
   return (
     <>

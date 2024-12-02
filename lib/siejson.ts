@@ -1,5 +1,4 @@
-// import fs from 'fs';
-import { IB, Konto, Res, SIEjson, UB } from 'types/types';
+import { IB, Konto, Res, SIEjson, UB, Ver } from 'types/types';
 
 export const convertSIEFileToJSON = (rawSIE: string): SIEjson => {
   const flaggaMatch = rawSIE.match(/#FLAGGA\s+(\d+)/);
@@ -64,6 +63,47 @@ export const convertSIEFileToJSON = (rawSIE: string): SIEjson => {
     };
   });
 
+  const verRows = rawSIE.match(/#VER\b[\s\S]*?\n\}/g) || [];
+
+  let ver = verRows.map((row) => {
+    const regex =
+      /#VER\s+([A-Z])\s+(\d+)\s+(\d+)\s+(?:"([^"]+)"|(\S+))\s+\d+\s*\{\s*([\s\S]*?)\n\}/;
+    const match = row.match(regex);
+
+    if (!match) {
+      return null;
+    }
+
+    let [, serie, vernr, verdatum, verText, verText2, transBlock] = match;
+
+    if (verText2) {
+      verText = verText2;
+    }
+
+    const transRegex = /#TRANS\s+(\d+)\s+\{([^}]*)\}\s+([-\d.]+)/g;
+
+    const matches = Array.from(transBlock.matchAll(transRegex));
+    let trans = matches.map((match) => ({
+      kontonr: match[1],
+      objektlista: [match[2]],
+      belopp: parseFloat(match[3])
+    }));
+
+    return {
+      serie,
+      vernr: parseInt(vernr),
+      verdatum: new Date(
+        parseInt(verdatum.substring(0, 4)),
+        parseInt(verdatum.substring(4, 6)) - 1,
+        parseInt(verdatum.substring(6, 8))
+      ),
+      vertext: verText,
+      trans
+    };
+  });
+
+  ver = ver.filter((v) => v !== null);
+
   const sieData: SIEjson = {
     flagga,
     program,
@@ -75,7 +115,8 @@ export const convertSIEFileToJSON = (rawSIE: string): SIEjson => {
     konto,
     ub,
     ib,
-    res
+    res,
+    ver: ver as Ver[]
   };
   return sieData;
 };
