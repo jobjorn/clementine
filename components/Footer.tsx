@@ -11,14 +11,14 @@ export const Footer: React.FC<{}> = () => {
   return (
     <footer
       style={{
-        backgroundColor: 'orange',
+        backgroundColor: '#DB7800',
         width: '100%',
         padding: '25px',
         color: 'white',
         fontSize: '0.8em'
       }}
     >
-      <Container maxWidth="sm" style={{ display: 'flex' }}>
+      <Container maxWidth="md" style={{ display: 'flex' }}>
         <Box sx={{ flexGrow: 1 }}>
           <ul style={{ listStyle: 'none' }}>
             {user ? (

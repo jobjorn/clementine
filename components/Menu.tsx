@@ -23,7 +23,6 @@ import {
   useTheme
 } from '@mui/material';
 
-
 import { Stack } from '@mui/system';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -40,7 +39,7 @@ export const Menu: React.FC<{}> = () => {
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link href="/" style={{ textDecoration: 'none' }} passHref>
-            Namnväljaren
+            Clementine
           </Link>
         </Typography>
         {foldMenu ? (
@@ -76,18 +75,6 @@ const ToolbarList: React.FC<{}> = () => {
           <Link href="/overview" passHref>
             <Button key={'Översikt'} sx={{ color: 'black' }}>
               Översikt
-            </Button>
-          </Link>
-
-          <Link href="/names" passHref>
-            <Button key={'Namn'} sx={{ color: 'black' }}>
-              Namn
-            </Button>
-          </Link>
-
-          <Link href="/voting" passHref>
-            <Button key={'Rösta'} sx={{ color: 'black' }}>
-              Rösta
             </Button>
           </Link>
 

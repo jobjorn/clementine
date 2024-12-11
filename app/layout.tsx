@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-page-custom-font */
 import { UserProvider } from '@auth0/nextjs-auth0/client';
-import { Box, Container, CssBaseline, ThemeProvider } from '@mui/material';
+import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter';
 import { Footer } from 'components/Footer';
+import { Menu } from 'components/Menu';
 import { theme } from 'styles/theme';
 import './global.scss';
 
@@ -45,21 +46,21 @@ export default function RootLayout({
                 sx={{
                   minHeight: '100svh',
                   display: 'flex',
-                  flexDirection: 'column'
+                  flexDirection: 'column',
+                  backgroundColor: 'rgb(245, 245, 245)'
                 }}
               >
-                <Container
-                  maxWidth="sm"
+                <Menu />
+                <Box
                   sx={{
                     flexGrow: 1,
-                    marginTop: '2em',
-                    marginBottom: '2em',
+                    margin: '2em',
                     display: 'flex',
                     flexDirection: 'column'
                   }}
                 >
                   {children}
-                </Container>
+                </Box>
                 <Footer />
               </Box>
             </ThemeProvider>

@@ -64,3 +64,36 @@ a {
 footer a {
   text-decoration: underline;
 }
+
+
+.overviewTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border: 1px solid #ddd;
+
+}
+
+.overviewTable th, .overviewTable td {
+  color: rgb(77, 77, 77);
+  border-bottom: 1px solid #ddd;
+  padding: 5px 8px;
+  font-size: 12px;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.overviewTable th {
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.34px;
+  border-bottom-width: 3px;
+  border-right: 1px solid #ddd;
+
+}
+
+td.currencyCell, th.currencyCell {
+  text-align: right;
+}
