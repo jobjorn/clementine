@@ -81,3 +81,20 @@ export type SIEjson = {
   objekt?: Objekt[];
   ver?: Ver[];
 };
+
+export type MonthlyOverview = {
+  accountNumber: number;
+  accountName: string;
+  january: number;
+  february: number;
+  march: number;
+  april: number;
+  may: number;
+  june: number;
+  july: number;
+  august: number;
+  september: number;
+  october: number;
+  november: number;
+  december: number;
+};
